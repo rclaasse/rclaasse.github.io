@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Dott.ssa Giorgia Argentini</title>
+  <meta name="description" content="Dott.ssa Giorgia Argentini, Medico e Agopuntrice. Visite mediche e trattamenti di agopuntura con approccio integrato e personalizzato.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Dott.ssa Giorgia Argentini</h1>
+
+  <button class="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav>
+    <div class="lang-switch">
+      <a href="index_en.html" title="English version">
+        <img src="images/gb.png" alt="English" width="20" height="14"> EN
+      </a>
+      |
+      <a href="index.html" title="Versione italiana">
+        <img src="images/it.png" alt="Italiano" width="20" height="14"> IT
+      </a>
+    </div>
+
+    <a href="index.html" class="active">Home</a>
+    <a href="chi_sono.html">Chi sono</a>
+    <a href="contatti.html">Contatti</a>
+
+    <a href="servizi.html" class="btn btn-servizi">Servizi ⚕️</a>
+    <a href="contatti.html" class="btn btn-prenota">Prenota 🗓️</a>
+  </nav>
+
+  <div class="overlay"></div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section aria-labelledby="intro">
+  <img
+    src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1600&q=80"
+    alt="Atmosfera calma e raccolta"
+    loading="lazy">
+
+    <h2 class="title-icon">
+      <span class="icon">🩺</span>
+      Medicina di base, medicina di viaggio e agopuntura
+    </h2>
+
+    <p>
+    Accolgo ogni persona in uno spazio di <strong>cura attenta</strong> e <strong>rispettosa</strong>,
+    offrendo servizi di <strong>medicina di base</strong>, <strong>medicina di viaggio</strong> e <strong>agopuntura</strong>.
+    </p>
+
+    <p>
+    La visita è un momento di <strong>ascolto</strong> e <strong>valutazione globale</strong>,
+    in cui il sintomo viene compreso nel contesto della <strong>vita quotidiana</strong>,
+    della <strong>storia personale</strong> e dell’<strong>equilibrio psicofisico</strong>.
+    </p>
+
+    <p>
+    L’obiettivo è costruire <strong>percorsi terapeutici personalizzati</strong>,
+    orientati alla <strong>prevenzione</strong>, alla <strong>gestione dei sintomi</strong>
+    e al <strong>miglioramento della qualità della vita</strong>.
+    </p>
+
+    <a href="contatti.html" class="btn">Prenota una visita</a>
+  </section>
+
+
+  <!-- AREE DI INTERVENTO -->
+  <section aria-labelledby="aree">
+    <img
+      src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1600&q=80"
+      alt="Consulto medico professionale"
+      loading="lazy">
+
+    <h2 class="title-icon">
+      <span class="icon">🧘</span>
+      Aree di intervento
+    </h2>
+
+    <p><strong>Medicina di base</strong> — ascolto, valutazione clinica e gestione delle principali problematiche di salute, con un’attenzione personalizzata alla storia e alle esigenze della persona.</p>
+
+    <p><strong>Medicina di viaggio</strong> — consulenze dedicate prima della partenza: prevenzione, vaccinazioni e indicazioni sanitarie per affrontare il viaggio in sicurezza e serenità.</p>
+
+    <p><strong>Agopuntura</strong> — trattamenti mirati per dolore, tensioni e disturbi funzionali, con un approccio delicato e rispettoso dell’equilibrio psicofisico.</p>
+
+    <a href="servizi.html" class="btn">Scopri i servizi</a>
+  </section>
+
+
+  <!-- TESTIMONIANZE -->
+  <section aria-labelledby="testimonianze">
+    <img
+      src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1600&q=80"
+      alt="Colloquio medico durante trattamento di agopuntura"
+      loading="lazy">
+
+    <h2 class="title-icon">
+      <span class="icon">💬</span>
+      Testimonianze
+    </h2>
+
+    <blockquote>
+    <p>“Mi sono sentito <strong>accolto</strong> e <strong>ascoltato</strong> fin dal <strong>primo incontro</strong>.
+    Il percorso è stato <strong>chiaro</strong>, <strong>professionale</strong> e davvero <strong>efficace nel tempo</strong>.”</p>
+    </blockquote>
+
+    <blockquote>
+    <p>“Durante una consulenza di <strong>medicina di viaggio</strong> ho ricevuto indicazioni precise e rassicuranti.
+    Mi sono sentito preparato e seguito con grande attenzione.”</p>
+    </blockquote>
+
+    <blockquote>
+    <p>“L’<strong>agopuntura</strong> mi ha aiutato a <strong>ridurre il dolore</strong> e a ritrovare un migliore <strong>equilibrio generale</strong>.”</p>
+    </blockquote>
+
+    <a href="contatti.html" class="btn">Contattami</a>
+  </section>
+
+</main>
+
+
+<!-- Boutons flottants (UNE SEULE FOIS) -->
+<a href="servizi.html" class="btn floating" id="floating-servizi">Servizi ⚕️</a>
+<a href="contatti.html" class="btn floating" id="floating-prenota">  Prenota 🗓️</a>
+<a href="https://wa.me/393737163199"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener"
+   aria-label="Contattami su WhatsApp">
+
+  <svg viewBox="0 0 32 32" width="24" height="24">
+    <path fill="white" d="M19.11 17.44c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.48-.88-.78-1.48-1.74-1.66-2.03-.18-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.25-.24-.58-.49-.5-.68-.5h-.58c-.2 0-.52.07-.8.37-.28.3-1.05 1.02-1.05 2.48 0 1.46 1.08 2.87 1.23 3.07.15.2 2.12 3.24 5.13 4.55.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.28-.2-.58-.35z"/>
+    <path fill="white" d="M16.02 3.2C9.12 3.2 3.5 8.82 3.5 15.72c0 2.2.57 4.35 1.66 6.25L4 28.8l7.02-1.84c1.82 1 3.86 1.52 5.98 1.52 6.9 0 12.52-5.62 12.52-12.52S22.92 3.2 16.02 3.2z"/>
+  </svg>
+</a>
+
+<footer>
+  © 2026 Dott.ssa Giorgia Argentini — Tutti i diritti riservati
+
+  <div style="margin-top:10px; font-size:0.9em;">
+    Iscritta all’Ordine dei Medici Chirurghi e degli Odontoiatri di Trieste – n° 3893
+  </div>
+
+    <div class="social-links">
+      <a href="https://www.facebook.com/p/Alaya-Center-Trieste-61580237623979/" target="_blank" class="social-icon facebook" aria-label="Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.2 3-3.2.9 0 1.8.2 1.8.2v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com/alaya.center.trieste/" target="_blank" class="social-icon instagram" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.9a1.1 1.1 0 100 2.2 1.1 1.1 0 000-2.2z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.youtube.com/ta-page" target="_blank" class="social-icon youtube" aria-label="YouTube">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M10 15l5.2-3L10 9v6zm12-3c0-2.5-.2-4.2-.5-5-.3-.8-.8-1.3-1.6-1.6C18.2 5 12 5 12 5s-6.2 0-7.9.4c-.8.3-1.3.8-1.6 1.6C2.2 7.8 2 9.5 2 12s.2 4.2.5 5c.3.8.8 1.3 1.6 1.6C5.8 19 12 19 12 19s6.2 0 7.9-.4c.8-.3 1.3-.8 1.6-1.6.3-.8.5-2.5.5-5z"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="credits">
+      Sito realizzato da Raphaël Claassen
+    </div>
+</footer>
+
+
+<script>
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('nav');
+  const overlay = document.querySelector('.overlay');
+
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    nav.classList.toggle('active');
+    overlay.classList.toggle('active');
+  });
+
+  overlay.addEventListener('click', () => {
+    burger.classList.remove('active');
+    nav.classList.remove('active');
+    overlay.classList.remove('active');
+  });
+</script>
+
+<script>
+  window.addEventListener("scroll", function() {
+    const header = document.querySelector("header");
+    if (window.scrollY > 80) header.classList.add("shrink");
+    else header.classList.remove("shrink");
+  });
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.body.classList.add('floating-ready');
+    }, 300);
+  });
+</script>
+
+</body>
+</html>

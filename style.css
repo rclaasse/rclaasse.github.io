@@ -1,0 +1,2019 @@
+/* ============================================================
+   🧭 TABLE DES MATIÈRES
+   ------------------------------------------------------------
+   1. BASE GÉNÉRALE
+   2. HEADER (Titre et fond)
+   3. NAVIGATION PRINCIPALE
+   4. SÉLECTEUR DE LANGUE (Lang Switch)
+   5. MENU BURGER (Mobile)
+   6. STRUCTURE DES SECTIONS GÉNÉRALES
+   7. BOUTONS GÉNÉRAUX + FLOTTANTS
+   8. ANIMATIONS GÉNÉRALES
+   9. FOOTER (Pied de page)
+   10. SERVICES (Cartes et carrousel)
+   11. LABS (Cadres thématiques)
+   12. CONTACT (Formulaire)
+   13. À PROPOS (Biographie, parcours)
+   14. RÉPONSES RESPONSIVE (Mobile)
+   ============================================================ */
+
+/* === PALETTE PRINCIPALE === */
+:root {
+    --bg-color: #F4F7F2;
+    --text-color: #2C2C2C;
+
+    --accent-color: #E67E22;          /* orange principal */
+    --accent-light: #FBE3D1;          /* très clair (fond pastille) */
+    --accent-hover: #D35400;          /* hover un peu plus foncé */
+
+    --header-gradient-start: #D96A10;
+    --header-gradient-end: #C45700;
+
+
+    --footer-bg: #D35400;             /* footer uni si utilisé */
+    --footer-gradient: #F2B37A;       /* footer gradient si utilisé */
+}
+
+/* ============================================================
+   1️⃣ SECTION BASE GÉNÉRALE
+   ------------------------------------------------------------
+   - Définit la typographie, couleurs et fond principal
+   - Applique un design doux et lumineux cohérent avec le thème
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.6;
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding-top: 100px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ============================================================
+   2️⃣ SECTION HEADER
+   ------------------------------------------------------------
+   - Gère le bandeau supérieur du site
+   - Comprend le titre doré et les bords arrondis inférieurs
+   ============================================================ */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1200;
+  background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+  color: white;
+  padding: 1.4rem 1rem; /* ✅ un peu plus fin */
+  text-align: center;
+  border-bottom: 2px solid var(--accent-hover); /* ✅ fine ligne mousse */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* ✅ légère ombre douce */
+}
+
+/* Ajuste la taille du titre pour ne pas écraser le contenu */
+header h1 {
+  font-size: 2rem;
+  color: var(--accent-light);
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* === Décale le contenu pour ne pas qu’il passe sous le header === */
+
+header.shrink {
+  padding: 0.6rem 1rem;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  transition: all 0.4s ease;
+}
+
+header.shrink h1 {
+  font-size: 1.4rem;
+  transition: font-size 0.4s ease;
+}
+
+
+/* ============================================================
+   3️⃣ SECTION NAVIGATION PRINCIPALE
+   ------------------------------------------------------------
+   - Barre de menu horizontale
+   - Liens standard + boutons “Services”, “Articles”, “Podcasts”
+   ============================================================ */
+
+nav {
+  text-align: center;
+}
+
+nav a {
+  margin: 0 14px;
+  color: var(--accent-light);
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255,255,255,0.4);
+}
+
+
+/* --- Boutons principaux du menu --- */
+nav .btn {
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+  color: #2c2c2c;
+  padding: 8px 18px;
+  border-radius: 20px;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+nav .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(90deg, var(--accent-hover), var(--accent-light));
+}
+
+/* --- Différenciation premium des boutons NAV --- */
+nav .btn.btn-servizi {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+nav .btn.btn-servizi:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+nav .btn.btn-prenota {
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+  color: #fff;
+  border: none;
+}
+
+nav .btn.btn-prenota:hover {
+  background: linear-gradient(90deg, var(--accent-hover), var(--accent-color));
+}
+
+
+/* ============================================================
+   4️⃣ SECTION SÉLECTEUR DE LANGUE (LANG SWITCH)
+   ------------------------------------------------------------
+   - Bloc en haut à droite : drapeaux + IT / EN
+   ============================================================ */
+
+.lang-switch {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #fdf6e3;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 6px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+.lang-switch a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;   /* blanc */
+  text-decoration: none;
+  font-weight: 600;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+}
+
+
+.lang-switch img {
+  display: block;
+  width: 20px;
+  height: 14px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ============================================================
+   5️⃣ SECTION MENU BURGER (MOBILE)
+   ------------------------------------------------------------
+   - Contrôle du menu mobile avec l’icône “burger”
+   - Animation en croix lors de l’ouverture
+   ============================================================ */
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1100;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+}
+
+/* --- Animation en croix quand actif --- */
+.burger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* --- Overlay derrière le menu mobile --- */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+  z-index: 1000;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* ============================================================
+   6️⃣ SECTION DES BLOCS <section>
+   ------------------------------------------------------------
+   - Apparence commune de toutes les sections
+   ============================================================ */
+
+section {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  background:var(--bg-color);
+  border-radius: 15px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+section h2 {
+  font-family: 'Raleway', sans-serif;
+  color:var(--accent-color);
+  margin-bottom: 1rem;
+  border-left:5px solid var(--accent-hover);
+  padding-left: 0.5rem;
+}
+
+
+
+
+/* ============================================================
+   7️⃣ SECTION BOUTONS (GÉNÉRAUX ET FLOTTANTS)
+   ------------------------------------------------------------
+   - Styles pour les boutons standards et fixes à droite
+   ============================================================ */
+
+.btn,
+.cta {
+  display: inline-block;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform .2s, box-shadow .2s, background .3s;
+}
+
+.btn:hover,
+.cta:hover {
+  background: var(--accent-hover);
+  color: var(--text-color);
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Boutons flottants --- */
+.floating {
+  position: fixed;
+  right: 20px;
+  min-width: 170px;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 30px;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Bouton flottant WhatsApp */
+.whatsapp-float{
+  position: fixed;
+  bottom: 170px;   /* ⬅️ plus haut */
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  z-index: 999;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.whatsapp-float:hover{
+  transform: scale(1.08);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+}
+
+.whatsapp-float svg{
+  width: 26px;
+  height: 26px;
+}
+
+/* Positions verticales uniquement */
+#floating-servizi {
+  bottom: 100px;
+
+  background: #fff;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+}
+
+
+#floating-prenota {
+  bottom: 40px;
+
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    var(--accent-hover)
+  );
+
+  color: #fff;
+}
+
+
+.floating:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* ============================================================
+   8️⃣ SECTION ANIMATIONS GÉNÉRALES
+   ------------------------------------------------------------
+   - Définition des effets “fadeIn” et “pulseGlow”
+   ============================================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2),
+      0 0 40px rgba(212, 175, 55, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.3),
+      0 0 70px rgba(212, 175, 55, 0.25);
+  }
+}
+
+
+/* ============================================================
+   9️⃣ SECTION FOOTER
+   ------------------------------------------------------------
+   - Pied de page avec liens et icônes sociales
+   ============================================================ */
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background:var(--text-color);
+  font-size: 0.9em;
+  color:var(--bg-color);
+  margin-top: 2rem;
+  border-top:3px solid var(--accent-hover);
+}
+
+.social-links {
+  margin-top: 1rem;
+}
+
+.social-icon {
+  margin: 0 15px;
+  display: inline-block;
+  color: var(--accent-color); /* ✅ vert forêt principal */
+  transition: color 0.3s, transform 0.2s;
+}
+
+
+.social-icon:hover {
+  transform: scale(1.3);
+}
+
+.social-icon.facebook:hover {
+  color: #1877f2;
+}
+.social-icon.instagram:hover {
+  color: #c13584;
+}
+.social-icon.youtube:hover {
+  color: #ff0000;
+}
+/* ============================================================
+   🔟 SECTION SERVICES — Cartes et Carrousel
+   ------------------------------------------------------------
+   - Présente les différents “Laboratoires”
+   - Inclut les cartes, carrousels et transitions
+   ============================================================ */
+
+
+
+/* ✅ HERO intro (remplace les 3 carrés) */
+.services-hero{
+  max-width: 900px;
+  margin: 1.2rem auto 1.2rem;
+  padding: 1.1rem 1.4rem;
+
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--accent-hover) 22%, transparent);
+  box-shadow: none;
+  border-radius: 14px;
+  margin-top: 2.9rem; 
+}
+
+.services-hero h2{
+  color: var(--accent-color);
+  margin-bottom: 0.6rem;
+  border-left: none;
+  padding-left: 0;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.services-hero p{
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.services-hero__badges{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0.5rem 0 1rem;
+}
+
+.services-hero__badges span{
+  background: var(--accent-light);
+  color: var(--text-color);
+  border: 1px solid color-mix(in srgb, var(--accent-hover) 20%, transparent);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.services-hero__actions{
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn.ghost{
+  background: #fff;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+}
+
+.btn.ghost:hover{
+  background: var(--accent-light);
+  color: var(--text-color);
+}
+
+
+/* CARROUSEL : reste le bloc central */
+.services-section{
+  background: color-mix(in srgb, var(--bg-color) 78%, white);
+  border: 1px solid color-mix(in srgb, var(--accent-hover) 22%, transparent);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+}
+
+/* PRENOTA : le vrai “déclic” final */
+.call-to-action#prenota{
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-light) 70%, white),
+    color-mix(in srgb, var(--bg-color) 85%, white)
+  );
+  border: 1px solid color-mix(in srgb, var(--accent-hover) 30%, transparent);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.10);
+}
+.call-to-action#prenota .btn.cta{
+  border-radius: 999px;
+  padding: 14px 30px;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   💫 SECTION CARROUSEL DES LABORATOIRES
+   ------------------------------------------------------------
+   - Permet de faire défiler horizontalement les cartes
+   - Inclut flèches fixes gauche/droite
+   ============================================================ */
+
+.carousel-title {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.4rem;
+  color: var(--accent-color); /* ✅ vert forêt principal */
+  font-weight: 600;
+  margin-top: 0.4rem;   
+  margin-bottom: 0.3rem;  
+  line-height: 1.2;
+  position: relative;
+}
+
+/* Petite ligne dorée décorative */
+.carousel-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent-hover); /* ✅ vert mousse clair */
+  margin: 0.25rem auto 0;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 900px;
+  margin-top: 0.3rem !important;  
+  margin-bottom: 1rem !important;   
+}
+
+/* --- Bande du carrousel --- */
+.services-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  justify-content: flex-start;
+  align-items: stretch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-hover) transparent; /* ✅ vert mousse clair */
+}
+
+/* --- Masque la scrollbar sur Chrome/Safari --- */
+.services-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+.services-carousel::-webkit-scrollbar-thumb {
+  background: var(--accent-hover); /* ✅ vert mousse clair */
+  border-radius: 10px;
+}
+
+/* --- Cartes à l’intérieur du carrousel --- */
+.carousel-card {
+  flex: 0 0 80%;        
+  scroll-snap-align: center;
+  background: var(--accent-light); /* vert brume clair #D7E4D0 */
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid color-mix(in srgb, var(--accent-hover) 40%, transparent); /* ✅ vert mousse doux */
+  padding: 1.2rem 1rem 1.4rem; 
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0.95;
+  width: 80%;
+  max-width: 500px;       
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.carousel-card:hover {
+  transform: scale(1.03);
+  opacity: 1;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Titre et icône --- */
+.carousel-card h3 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--accent-color); /* ✅ vert forêt principal */
+  font-size: 1.15rem;       
+  margin-bottom: 0.6rem;
+}
+
+/* --- Texte d’intro italique --- */
+.carousel-card .synthese {
+  font-style: italic;
+  color: #2c2c2c;
+  margin-bottom: 0.8rem;    
+  line-height: 1.45;
+}
+.carousel-card p {
+  flex-grow: 1; /* ✅ permet au texte de prendre l’espace restant */
+}
+
+/* --- Image de la carte --- */
+.carousel-card img {
+  display: block;
+  margin: 0.3rem auto 0.8rem;
+  border-radius: 10px;
+  max-height: 150px;        
+  object-fit: cover;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+.carousel-card .btn {
+  margin-top: auto; /* ✅ pousse le bouton en bas du flex */
+  align-self: center;
+}
+
+
+/* --- Flèches fixes du carrousel --- */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  background: rgba(255,255,255,0.85);
+  border: 2px solid var(--accent-hover); /* ✅ vert mousse clair */
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--accent-color); /* ✅ vert forêt principal */
+}
+
+.carousel-arrow.left { left: -20px; }
+.carousel-arrow.right { right: -20px; }
+
+/* --- Cache les flèches sur mobile --- */
+@media (max-width: 768px) {
+  .carousel-arrow {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   💜 SECTION CALL-TO-ACTION FINALE
+   ------------------------------------------------------------
+   - Bloc d’invitation à contacter ou participer
+   ============================================================ */
+
+.call-to-action {
+  max-width: 500px;
+  margin: 4rem auto;
+  padding: 1.5rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.call-to-action h2 {
+  color: var(--accent-color);
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 1rem;
+  border-bottom: none;   /* ⬅️ supprime la barre */
+  padding-bottom: 0;     /* ⬅️ supprime l’espace réservé */
+}
+
+.call-to-action p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.call-to-action .btn {
+  margin-top: 1.8rem;
+  padding: 14px 32px;
+  font-size: 1.05rem;
+  border-radius: 30px;
+}
+
+
+/* ============================================================
+   ✨ SECTION CITATION FINALE
+   ------------------------------------------------------------
+   - Bloc stylisé avec guillemets dorés
+   ============================================================ */
+
+.closing-quote {
+  max-width: 720px;
+  margin: 3.5rem auto 4rem;
+  padding: 2rem 2.2rem;
+  background: radial-gradient(circle at top, var(--accent-light) 0%, var(--bg-color) 100%); /* ✅ du vert brume au fond clair */
+  border: 1.5px solid var(--accent-hover); /* ✅ vert mousse clair */
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  text-align: center;
+  font-style: italic;
+  color: var(--text-color);
+  position: relative;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInQuote 1s ease forwards 0.5s;
+}
+
+/* --- Guillemets décoratifs --- */
+.closing-quote::before { content: "❝"; }
+.closing-quote::after  { content: "❞"; }
+
+blockquote {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after {
+  content: none !important;
+}
+
+/* --- Ligne verte sous la citation --- */
+.closing-quote em {
+  display: block;
+  margin-top: 1rem;
+  font-style: normal;
+  color: var(--accent-color); /* ✅ vert forêt profond */
+  font-weight: 600;
+  border-top: 1px solid var(--accent-hover); /* ✅ ligne vert mousse */
+  padding-top: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* --- Animation d’apparition --- */
+@keyframes fadeInQuote {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive ajusté --- */
+@media (max-width: 768px) {
+  .closing-quote {
+    padding: 1.8rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  .closing-quote::before,
+  .closing-quote::after { font-size: 1.8rem; }
+}
+/* ============================================================
+   💌 SECTION CONTACT — Formulaire de contact et disposition
+   ------------------------------------------------------------
+   - Deux colonnes : texte/image à gauche + formulaire à droite
+   - Conception moderne, responsive et douce
+   ============================================================ */
+
+.contact {
+  background: linear-gradient(180deg, #ffffff 0%, #fdfaf4 100%);
+  padding: 3rem 1rem;
+}
+
+
+/* --- Bloc gauche : texte et image --- */
+.contact-info-box {
+  flex: 1;
+}
+
+.contact-map {
+  flex: 1;
+  display: flex;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border-radius: 12px;
+}
+
+.info-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.info-icon {
+  font-size: 1.4rem;
+  min-width: 30px;
+}
+
+.info-item strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--accent-color);
+}
+
+.title-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-icon .icon {
+  font-size: 1.1rem;
+  color: var(--accent-color);
+}
+
+/* formulaire --- */
+
+.contact-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+  flex: 1 1 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form label {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  color: var(--accent-color); /* ✅ vert forêt principal */
+  margin-bottom: 0.3rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid color-mix(in srgb, var(--accent-color) 25%, transparent); /* ✅ bordure vert forêt translucide */
+  border-radius: 10px;
+  background: var(--bg-color); /* ✅ fond clair et naturel */
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent-hover); /* ✅ vert mousse au focus */
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent-hover) 60%, transparent); /* ✅ halo vert doux */
+  outline: none;
+}
+
+/* --- Bouton Envoyer --- */
+.contact-form .btn {
+  align-self: center;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+  color: #2c2c2c;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+.contact-form .btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, var(--accent-hover), var(--accent-light));
+  box-shadow: 0 10px 18px rgba(0,0,0,0.15);
+}
+
+.contact-grid {
+  display: flex;
+  align-items: stretch; /* 🔥 clé pour même hauteur */
+  gap: 2rem;
+}
+
+
+
+
+/* --- Message de confirmation --- */
+#form-status {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  color: var(--accent-color); /* ✅ vert forêt principal */
+  margin-top: 1rem;
+}
+
+/* --- Responsive mobile --- */
+@media (max-width: 768px) {
+  .contact-form { width: 100%; }
+  .contact-form .btn { width: 100%; }
+}
+
+/* --- Lignes contact cliquables --- */
+.info-link{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 14px;
+  padding: 12px 14px;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+  cursor: pointer;
+}
+
+.info-link:hover{
+  background: color-mix(in srgb, var(--accent-light) 55%, white);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+
+.info-link:active{
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+}
+
+.info-link .info-icon{
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent-light) 70%, white);
+}
+
+/* WhatsApp vert */
+.whatsapp-icon{
+  color: #25D366; /* vert WhatsApp */
+  background: color-mix(in srgb, #25D366 14%, white);
+}
+
+
+
+/* Bande compacte sous la map */
+.map-meta{
+  margin-top: 14px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.map-meta-item{
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.map-meta-icon{
+  font-size: 1.15rem;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent-light) 70%, white);
+}
+
+.map-meta strong{
+  display: block;
+  color: var(--accent-color);
+  margin-bottom: 2px;
+}
+
+.map-meta p{
+  margin: 0;
+  line-height: 1.3;
+}
+
+@media (max-width: 768px){
+  .map-meta{
+    grid-template-columns: 1fr;
+  }
+}
+
+.map-frame{
+  width: 100%;
+  height: 450px;   /* ajuste ici */
+  border: 0;
+  border-radius: 12px;
+}
+@media (max-width: 768px){
+  .map-frame{ height: 320px; }
+}
+
+/* ============================================================
+   📘 SECTION À PROPOS — Biographie et CV
+   ------------------------------------------------------------
+   - Présente le portrait, parcours et recherches
+   - Style doré, arrondi, centré
+   ============================================================ */
+
+.intro-about {
+  max-width: 520px;
+  margin: 3rem auto;
+  padding: 1.8rem 2rem;
+  background: var(--bg-color); /* ✅ fond clair naturel */
+  border: 1.5px solid var(--accent-hover); /* ✅ vert mousse clair */
+  border-radius: 20px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  text-align: justify;
+  line-height: 1.75;
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+}
+
+.intro-about::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-hover) 30%, transparent), transparent 70%); /* ✅ halo vert mousse translucide */
+  pointer-events: none;
+}
+
+.intro-about h2 {
+  text-align: center;
+  color: var(--accent-color); /* ✅ vert forêt */
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  border-bottom: 1.5px solid var(--accent-hover); /* ✅ ligne vert mousse */
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* --- Portrait circulaire --- */
+.intro-about img {
+  display: block;
+  max-width: 40%;
+  margin: 1.2rem auto 1.8rem;
+  border-radius: 50%;
+  border: 1px solid var(--accent-hover); /* ✅ bordure vert mousse */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  opacity: 0.95;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.intro-about img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- Citation dans bio-section --- */
+.bio-section blockquote {
+  margin-top: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  background: #fff;
+  border-left: 4px solid var(--accent-hover);
+  border-radius: 8px;
+  font-style: italic;
+  color: #444;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .intro-about {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+  .intro-about img {
+    max-width: 70%;
+  }
+}
+
+
+/* ============================================================
+   📜 LISTES PERSONNALISÉES — Puces dorées et icônes
+   ============================================================ */
+
+section ul {
+  list-style: none;
+  margin: 1rem 0 1.5rem 0;
+  padding-left: 0;
+}
+
+section li {
+  position: relative;
+  padding-left: 2rem;
+}
+
+section li::before {
+  content: attr(data-icon);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1rem;
+}
+
+
+
+/* --- Variante étoile --- */
+section li.star::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0.3rem;
+  width: 14px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d4af37' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.61L12 2 10.19 8.63 3 9.24l4.46 4.73L5.82 21z'/%3E%3C/svg%3E") no-repeat center center;
+  background-size: contain;
+  opacity: 0.9;
+}
+
+
+/* ============================================================
+   🪶 BOUTON “TÉLÉCHARGER” — Élégant et lisible
+   ============================================================ */
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-hover)); /* ✅ dégradé vert forêt → mousse */
+  color: var(--text-color);
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 25px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+}
+
+.download-btn:hover {
+  background: linear-gradient(90deg, var(--accent-hover), var(--accent-light)); /* ✅ vert clair et brume au survol */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  color: var(--text-color);
+}
+
+.download-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--text-color); /* ✅ cohérent avec le texte du bouton */
+}
+
+
+
+/* ============================================================
+   📱 NAVIGATION MOBILE — Version burger & overlay
+   ------------------------------------------------------------
+   - Transforme la nav en panneau latéral sur mobile
+   ============================================================ */
+
+@media (max-width: 768px) {
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--header-gradient-start), var(--header-gradient-end)); /* ✅ du vert forêt au vert mousse */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.8rem;
+    padding-top: 4rem;
+    transition: right 0.4s ease;
+    z-index: 1001;
+  }
+
+  nav.active { right: 0; }
+
+  nav a {
+    color: var(--accent-light); /* ✅ vert brume clair pour bon contraste */
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s;
+  }
+
+  nav.active a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  nav.active a:nth-child(1) { transition-delay: 0.1s; }
+  nav.active a:nth-child(2) { transition-delay: 0.2s; }
+  nav.active a:nth-child(3) { transition-delay: 0.3s; }
+
+  nav a:hover { 
+    color: var(--accent-hover); /* ✅ vert mousse clair au survol */
+  }
+
+  nav a.btn { display: none !important; }
+
+  /* --- Icône burger --- */
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+  }
+
+  .burger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.4s ease;
+  }
+
+  .burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* --- Fond d’assombrissement derrière le menu --- */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+    z-index: 1000;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+  /* --- Lang-switch mobile visible dans le menu --- */
+  .lang-switch.mobile {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .lang-switch.mobile img {
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  /* Cache le sélecteur principal du header sur mobile */
+  header > .lang-switch {
+    display: none;
+  }
+
+
+/* ============================================================
+   ✅ FIN DU FICHIER — Voie Spirituelle (2025)
+   ------------------------------------------------------------
+   Fichier commenté et optimisé pour compréhension complète
+   ============================================================ */
+
+
+/* ============================================================
+   ✨ MISE EN ÉVIDENCE À LA FIN DE LA PAGE
+   ------------------------------------------------------------
+   - Les mots ciblés deviennent gras + surlignés en jaune
+   - Activation automatique quand on atteint le bas de la page
+   ============================================================ */
+.bold-on-scroll {
+  font-weight: normal;
+  background: none;
+  transition: all 0.6s ease;
+}
+
+.bold-on-scroll.active {
+  font-weight: bold;
+  background: linear-gradient(transparent 60%, #fff3a6 60%);
+  color: #2c2c2c; /* tu peux mettre #4b2e83 pour un contraste plus fort */
+}
+/* ============================================================
+   📱 HEADER MOBILE FIXE ET COMPACT
+   ------------------------------------------------------------
+   - Réduit la hauteur du bandeau violet
+   - Rend le titre plus petit
+   - Garde le header et le menu burger visibles au scroll
+   ============================================================ */
+
+@media (max-width: 768px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1200; /* au-dessus du reste */
+    background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+    padding: 0.8rem 1rem; /* ✅ beaucoup plus fin */
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  /* ✅ Le titre devient plus petit */
+  header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--accent-light); /* ✅ vert clair au lieu du doré */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+  /* ✅ Espace réservé sous le header pour que le contenu ne passe pas dessous */
+  body {
+    padding-top: 70px; /* ajuste selon la hauteur du header */
+  }
+
+  /* ✅ Le menu burger reste bien placé */
+  .burger {
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    z-index: 1300;
+  }
+
+  /* ✅ Le menu déroulant (nav.active) s’affiche sous le header fixe */
+  nav {
+    top: 60px; /* juste en dessous du header */
+    height: calc(100% - 60px);
+  }
+
+  /* ✅ On masque le ruban arrondi du header sur mobile */
+  header::after {
+    display: none;
+  }
+}
+/* ============================================================
+   📱 Ajustement de la hauteur des cartes du carrousel en mobile
+   ------------------------------------------------------------
+   - Réduit la hauteur visuelle sans modifier la largeur
+   ============================================================ */
+@media (max-width: 768px) {
+  .carousel-title {
+    font-size: 1.2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.2rem;
+  }
+  .carousel-title::after {
+    width: 30px;
+    height: 1.5px;
+    margin-top: 0.2rem;
+  }
+
+  .carousel-card {
+    justify-content: flex-start;
+    padding-bottom: 1rem;
+    max-height: none;         
+    overflow: visible;         
+  }
+
+  .carousel-card img {
+    max-height: 120px;
+    margin: 0.4rem auto 0.6rem;
+  }
+
+  .carousel-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .carousel-card .synthese {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.6rem;
+  }
+
+  .carousel-card p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+
+  .carousel-card .btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    align-self: center;       
+  }
+
+  .carousel-card .mini-invite {
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+  }
+}
+
+/* ============================================================
+   🌿 FICHE ATELIER — Détails des laboratoires (lab1–lab5)
+   ------------------------------------------------------------
+   - Présente les informations concrètes et pratiques
+   - Style clair et doux
+   ============================================================ */
+.lab-details {
+  max-width: 800px;
+  margin: 2rem auto 3rem;
+  background:var(--bg-color);
+  padding: 2rem 2.2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  border:1px solid color-mix(in oklab, var(--accent-hover) 40%, transparent);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.lab-details h2 {
+  color:var(--accent-color);
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  border-left:4px solid var(--accent-hover);
+  padding-left: 0.5rem;
+}
+
+.lab-details h3 {
+  color: #2c2c2c;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.lab-details p {
+  color: #2c2c2c;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.lab-details ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.8rem 0 1.2rem;
+}
+
+.lab-details li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.lab-details li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-hover); /* ✅ vert mousse clair */
+  font-size: 1.2rem;
+}
+
+
+/* --- Colonnes Inputs / Outputs --- */
+.lab-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.lab-columns > div {
+  flex: 1 1 300px;
+  background: color-mix(in srgb, var(--accent-light) 70%, white);
+  border: 1px solid var(--accent-hover); /* ✅ vert mousse clair */
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* --- Bouton inscription --- */
+.lab-details .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-hover)); /* ✅ dégradé vert forêt → mousse */
+  color: var(--text-color);
+  font-weight: 600;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.lab-details .btn:hover {
+  background: linear-gradient(90deg, var(--accent-hover), var(--accent-light)); /* ✅ dégradé vert mousse → brume douce */
+  transform: scale(1.05);
+}
+
+/* --- Version mobile --- */
+@media (max-width: 768px) {
+  /* --- Conteneur général plus léger --- */
+  .lab-details {
+    padding: 1.2rem 1.2rem;
+    background: var(--bg-color); /* ✅ fond vert clair naturel */
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  }
+
+  .lab-details h2 {
+    font-size: 1.1rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.4rem;
+    border-left: 3px solid var(--accent-hover); /* ✅ vert mousse clair */
+    padding-left: 0.4rem;
+  }
+
+  .lab-details p,
+  .lab-details li {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* --- Colonne Inputs / Outputs : devient pile verticale --- */
+  .lab-columns {
+    gap: 0.6rem !important;
+    margin-bottom: 0.8rem !important; 
+  }
+
+  .lab-columns > div {
+    padding: 0.8rem 1rem;
+    margin-bottom: 0 !important; 
+  }
+
+  .lab-columns h3 {
+    margin-bottom: 0.4rem;
+  }
+  .lab-columns ul {
+    margin-bottom: 0.2rem;
+  }
+
+  .lab-columns li {
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  /* --- Bouton d’inscription centré et lisible --- */
+  .lab-details .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+}
+/* ================================
+   MINI SEZIONE — Come si svolge una seduta
+   ================================ */
+
+.seduta-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--bg-color);
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  border: 1px solid var(--accent-hover);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.seduta-section h2 {
+  color: var(--accent-color);
+  text-align: center;
+  margin-bottom: 1.8rem;
+  border-left: none;
+}
+
+.seduta-steps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 par ligne */
+  gap: 1.8rem 2rem; /* plus respirant */
+}
+
+.step {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.step-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.step h3 {
+  color: var(--accent-color);
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+}
+
+.step p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+@media (max-width: 700px) {
+  .seduta-steps {
+    grid-template-columns: 1fr; /* 1 carte par ligne en mobile */
+  }
+}
+
+.seduta-section .step {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.seduta-section .step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =====================================
+   📱 Boutons flottants version mobile
+   ===================================== */
+@media (max-width: 768px) {
+
+  .floating {
+    min-width: auto;        /* enlève largeur minimale */
+    padding: 8px 14px;      /* moins de padding */
+    font-size: 0.85rem;     /* texte plus petit */
+    right: 14px;            /* un peu plus proche du bord */
+  }
+
+  #floating-servizi {
+    bottom: 85px;           /* ajuste empilement */
+  }
+
+  #floating-prenota {
+    bottom: 30px;
+  }
+
+}
+
+/* 📱 Ajustement mobile uniquement */
+@media (max-width: 768px) {
+
+  .whatsapp-float{
+    bottom: 135px;   /* rapproche des autres boutons */
+    width: 48px;     /* plus petit */
+    height: 48px;
+  }
+
+  .whatsapp-float svg{
+    width: 22px;
+    height: 22px;
+  }
+
+}
+.credits{
+  margin-top: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.credits a{
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255,255,255,0.45);
+}
+
+.credits a:hover{
+  opacity: 1;
+}
+/* =========================
+   📅 Booking (style eTermin)
+   ========================= */
+
+.booking-grid{
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.booking-services{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.service-card{
+  text-align: left;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 1.2rem 1.2rem 1.1rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.service-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+}
+
+.service-card.active{
+  border-color: color-mix(in srgb, var(--accent-color) 65%, transparent);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+.service-card__title{
+  font-weight: 800;
+  color: var(--accent-color);
+  font-size: 1.05rem;
+  margin-bottom: .4rem;
+}
+
+.service-card__meta{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: #666;
+  font-size: .92rem;
+  margin-bottom: .6rem;
+}
+
+.service-card__price{
+  font-weight: 700;
+  color: #444;
+}
+
+.service-card__desc{
+  color: #444;
+  line-height: 1.45;
+  font-size: .95rem;
+}
+
+/* Résumé à droite */
+.booking-summary h3{
+  margin: 0 0 .8rem;
+  color: var(--accent-color);
+}
+
+/* ✅ rend le résumé "posé" comme eTermin */
+.booking-summary{
+  position: sticky;
+  top: 110px; /* ajuste selon la hauteur de ton header */
+}
+
+.summary-box{
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 1rem 1rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.summary-step{
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding-bottom: .9rem;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  margin-bottom: .9rem;
+}
+
+.step-dot{
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--accent-light) 70%, white);
+  color: #333;
+  font-weight: 800;
+}
+
+.summary-line{
+  display: flex;
+  justify-content: space-between;
+  padding: .45rem 0;
+  color: #444;
+}
+
+.summary-hint{
+  margin-top: .9rem;
+  font-size: .92rem;
+  color: #555;
+}
+
+/* =========================
+   Steps + affichage conditionnel
+   ========================= */
+
+.step-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin: 1.2rem 0 1rem;
+  color: var(--accent-color);
+  font-size: 1.05rem;
+}
+
+.step-title span{
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: var(--accent-light);
+  font-weight:800;
+}
+
+.step-block{
+  margin-top: 1.2rem;
+}
+
+.is-hidden{
+  display: none;
+}
+
+/* =========================
+   Responsive (booking layout)
+   ========================= */
+@media (max-width: 900px){
+  .booking-grid{ grid-template-columns: 1fr; }
+  .booking-services{ grid-template-columns: 1fr; }
+  .booking-summary{ position: static; } /* sticky off sur mobile */
+}
+
+/* =========================
+   Cal.com embed – crop propre (haut + bas)
+   ========================= */
+:root{
+  --cal-crop-top: 24px;     /* coupe le ruban gris du haut */
+  --cal-mask-bottom: 120px; /* coupe branding / zone basse */
+  --cal-iframe-height: 680px; /* réduit l'espace vide */
+}
+
+.cal-embed{
+  margin-top: 1.6rem;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.cal-embed__inner{
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--bg-color);
+}
+
+/* ✅ on remonte l'iframe pour cacher le haut */
+#cal-iframe{
+  display:block;
+  width:100%;
+  height: var(--cal-iframe-height);
+  border:0;
+  margin-top: calc(-1 * var(--cal-crop-top));
+}
+
+/* masque haut */
+.cal-embed__inner::before{
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0;
+  height: var(--cal-crop-top);
+  background: var(--bg-color);
+  z-index:10;
+  pointer-events:none;
+}
+
+/* masque bas */
+.cal-embed__inner::after{
+  content:"";
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height: var(--cal-mask-bottom);
+  background: var(--bg-color);
+  z-index:10;
+  pointer-events:none;
+}
+
+/* =========================
+   Mobile (cal.com)
+   ========================= */
+@media (max-width: 900px){
+  :root{
+    --cal-crop-top: 54px;
+    --cal-mask-bottom: 1px;
+    --cal-iframe-height: 720px;
+  }
+}
+
+.is-hidden{ display:none; }
+
+.step-actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top: 12px;
+}
+@media (max-width: 900px){
+  .step-actions{ justify-content: stretch; }
+  .step-actions .btn{ width:100%; text-align:center; }
+}
+
+#step3-title{
+  scroll-margin-top: 120px; /* ajuste si ton header est plus grand */
+}
+#step2-title{ scroll-margin-top: 120px; }
